@@ -1,0 +1,83 @@
+{
+  "name": "bithumb-generate-coin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "build:osx": "build --mac",
+    "build:linux": "npm run build:linux32 && npm run build:linux64",
+    "build:linux32": "build --linux --ia32",
+    "build:linux64": "build --linux --x64",
+    "build:win": "npm run build:win32 && npm run build:win64",
+    "build:win32": "build --win --ia32",
+    "build:win64": "electron-builder --win --x64"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^8.1.0",
+    "electron-builder": "^22.4.0",
+    "electron-reload": "^1.5.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "popper.js": "^1.16.1",
+    "request": "^2.88.2",
+    "uuid": "^7.0.2"
+  },
+  "build": {
+    "productName": "coinAddressGenerator",
+    "appId": "kr.co.coinAddressGenerator.www",
+    "asar": true,
+    "protocols": {
+      "name": "productTest",
+      "schemes": [
+        "productTest"
+      ]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "./electron-root/favicon.ico"
+    },
+    "dmg": {
+      "title": "tournant",
+      "icon": "./electron-root/favicon.ico"
+    },
+    "win": {
+      "target": [
+        "zip"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ],
+      "icon": "./electron-root/favicon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "installerLanguages": [
+        "en_US",
+        "ko_KR"
+      ],
+      "language": "1042"
+    },
+    "directories": {
+      "output": "build/",
+      "app": "."
+    }
+  }
+}

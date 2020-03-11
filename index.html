@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>실시간 처리금액 계산기</title>
+  <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+
+  <script type="text/javascript">
+      window.$ = window.jquery = require("jquery");
+      require("bootstrap");
+      window.popper = require("popper.js");
+
+      $(function () {
+          GenerateCoin.init();
+      });
+  </script>
+  <script type="text/javascript" src="js/generateCoin.js"></script>
+</head>
+
+<body>
+<div class="jumbotron">
+  <h1 class="display-4">입금 주소 생성기</h1>
+  <div class="alert alert-dark" role="alert" id="alertDiv" style="display: none;"> </div>
+
+  <div class="form-group row">
+    <div class="col-6">
+      <label for="accessKey">Access Key</label>
+      <input type="text" class="form-control" id="accessKey" aria-describedby="emailHelp">
+      <small id="accessKeyHelp" class="form-text text-muted">액세스키를 입력해주세요</small>
+    </div>
+    <div class="col-6">
+      <label for="secretKey">Secret Key</label>
+      <input type="text" class="form-control" id="secretKey" aria-describedby="secretKeyHelp">
+      <small id="secretKeyHelp" class="form-text text-muted">시크릿키를 입력해주세요</small>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-6">
+      <label for="currency">코인타입</label>
+      <input type="text" class="form-control" id="currency" aria-describedby="currencyHelp">
+      <small id="currencyHelp" class="form-text text-muted">코인타입을 입력해주세요</small>
+    </div>
+    <div class="col-6">
+      <label for="loopTime">반복시간(ms)</label>
+      <input type="number" class="form-control" id="loopTime" aria-describedby="loopTimeHelp">
+      <small id="loopTimeHelp" class="form-text text-muted">생성 반복시간을 입력해주세요 (단위: ms, 1000ms = 1초)</small>
+    </div>
+  </div>
+  <button id="startBtn" type="button" class="btn btn-primary">시작</button>
+
+  <hr class="my-4">
+  <div class="alert alert-success" role="alert" id="successMsg" style="display: none;"> </div>
+  <div class="alert alert-danger" role="alert" id="errorMsg" style="display: none;"> </div>
+  <div class="alert alert-info" role="alert" id="infoMsg" style="display: none;"> </div>
+</div>
+</body>
+
+</html>
